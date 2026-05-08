@@ -1,22 +1,50 @@
 
 // ================= MOBILE MENU =================
 
-const menuToggle = document.getElementById("menuToggle");
-const navLinks = document.getElementById("navLinks");
+document.addEventListener("DOMContentLoaded", () => {
 
-menuToggle.addEventListener("click", () => {
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinks = document.getElementById("navLinks");
 
-    navLinks.classList.toggle("active");
+    // MENU TOGGLE
 
-    if (navLinks.classList.contains("active")) {
+    menuToggle.addEventListener("click", () => {
 
-        menuToggle.innerHTML = `<i class="fa-solid fa-xmark"></i>`;
+        navLinks.classList.toggle("active");
 
-    } else {
+        // ICON CHANGE
 
-        menuToggle.innerHTML = `<i class="fa-solid fa-bars"></i>`;
+        if (navLinks.classList.contains("active")) {
 
-    }
+            menuToggle.innerHTML = `<i class="fa-solid fa-xmark"></i>`;
+
+        } else {
+
+            menuToggle.innerHTML = `<i class="fa-solid fa-bars"></i>`;
+
+        }
+
+    });
+
+    // MOBILE MENU AUTO CLOSE
+
+    const navItems = document.querySelectorAll("#navLinks li a");
+
+    navItems.forEach((link) => {
+
+        link.addEventListener("click", () => {
+
+            // SIDEBAR CLOSE
+
+            navLinks.classList.remove("active");
+
+            // ICON RESET
+
+            menuToggle.innerHTML = `<i class="fa-solid fa-bars"></i>`;
+
+        });
+
+    });
 
 });
 
